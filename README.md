@@ -1,4 +1,4 @@
-# Nokia L3VPN Telemetry Lab Demo
+# SRv6 FlexAlgo Telemetry Lab Demo (Nokia SR OS)
 
 - Transport: Base SRv6 (end-dt46), FlexAlgo 128 (with STAMP dynamic delay measurement)
 - Service: EVPN IFL (Interface-less)
