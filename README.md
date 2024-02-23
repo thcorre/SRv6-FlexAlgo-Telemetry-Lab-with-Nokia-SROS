@@ -42,8 +42,8 @@ Once the lab has been deployed, the different SR Linux nodes can be accessed via
 
 ```bash
 # reach a SR OS IP/MPLS router via SSH
-ssh admin@R1
-ssh admin@R5
+ssh admin@clab-srv6-flexalgo-R1
+ssh admin@clab-srv6-flexalgo-R5
 
 # reach a Linux client via Docker
 docker exec -it client1 bash
