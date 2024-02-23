@@ -16,7 +16,7 @@ One Linux client sending traffic to another client (unidirectional) through a L3
 
 ## Requirements
 Versions used are:
-* containerlab 0.51.3
+* containerlab 0.51.3 (latest version at time of writing)
 * vr-sros 23.10.R3 (requires license)
 
 SROS image was created using [VR Network Lab](https://github.com/vrnetlab/vrnetlab)
