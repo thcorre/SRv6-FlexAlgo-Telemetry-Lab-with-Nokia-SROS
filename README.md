@@ -13,6 +13,18 @@ A GPG (gnmic/prometheus/grafana) stack is used to collect and report all the obj
 Grafana dashboards are provided to check the latency in "real" time (5-10s updates).
 One Linux client sending traffic to another client (unidirectional) through a L3VPN (EVPN IFL).
 
+## Requirements
+Versions used are:
+* containerlab 0.51.3
+* vr-sros 23.10.R3 (requires license)
+
+SROS image was created using [VR Network Lab](https://github.com/vrnetlab/vrnetlab)
+IMPORTANT: vr-sos must be set as an image in docker to be pull directly by containerlab
+```
+# docker images | grep vr-sros
+vr-sros                               22.5.R2                         f33cd7a3732a        3 months ago        965MB
+```
+
 A fine-grained control on links delay can be achieved via tc cmd on the host or directly through containerlab cmd to influence the lowest latency path.
 
 
