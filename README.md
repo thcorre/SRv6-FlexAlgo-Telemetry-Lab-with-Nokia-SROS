@@ -36,6 +36,19 @@ To remove the lab:
 containerlab destroy --cleanup
 ```
 
+## Accessing the network elements
+
+Once the lab has been deployed, the different SR Linux nodes can be accessed via SSH through their management IP address, given in the summary displayed after the execution of the deploy command. It is also possible to reach those nodes directly via their hostname, defined in the topology file. Linux clients cannot be reached via SSH, as it is not enabled, but it is possible to connect to them with a docker exec command.
+
+```bash
+# reach a SR OS IP/MPLS router via SSH
+ssh admin@R1
+ssh admin@R5
+
+# reach a Linux client via Docker
+docker exec -it client1 bash
+```
+
 A fine-grained control on links delay can be achieved via tc cmd on the host or directly through containerlab cmd to influence the lowest latency path.
 
 
