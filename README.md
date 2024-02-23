@@ -1,10 +1,11 @@
 # SRv6 FlexAlgo Telemetry Lab Demo (Nokia SR OS)
 
-* Transport: Base SRv6 (end-dt46), FlexAlgo 128 (with STAMP dynamic delay measurement)
+Objective: Creating a traffic-engineered path between R1 and R5 that uses delay as a metric.
+* Transport: Base SRv6 (end-dt46) and FlexAlgo 128 (with STAMP dynamic delay measurement)
 * Service: EVPN IFL (Interface-less)
 
 The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia routers spanning from Access/Aggregation (7250 IXR Gen2/2c) to Edge/Core (7750 SR FP4/FP5-based).
-This is based on usage of a Flexible Algorithm 128 with delay used as a metric condition to achieve the lowest latency path.
+This is based on usage of a Flexible Algorithm (Algo 128) with delay used as a metric condition to achieve the lowest latency path.
 
 A GPG (gnmic/prometheus/grafana) stack is used to collect and report all the objects of interest (links delay, interfaces state, metrics, cpu, mem, etc.) via Telemetry (gRPC):
 
