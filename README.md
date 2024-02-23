@@ -1,4 +1,4 @@
-# SRv6 FlexAlgo Telemetry Lab Demo (Nokia SR OS)
+# SRv6 FlexAlgo Telemetry Lab (Nokia SR OS)
 
 Objective: Creating a traffic-engineered path between R1 and R5 that uses delay as a metric.
 * Transport: Base SRv6 (end-dt46) and FlexAlgo 128 (with STAMP dynamic delay measurement)
