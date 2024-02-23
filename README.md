@@ -19,17 +19,15 @@ Versions used are:
 * vr-sros 23.10.R3 (requires license)
 
 SROS image was created using [VR Network Lab](https://github.com/vrnetlab/vrnetlab)
-IMPORTANT: vr-sos must be set as an image in docker to be pull directly by containerlab
+IMPORTANT: vr-sros must be set as an image in docker to be pull directly by containerlab
 ```
 # docker images | grep vr-sros
-vr-sros                               22.5.R2                         f33cd7a3732a        3 months ago        965MB
+vr-sros                               23.10.R3         6725f1548692   3 days ago      1.43GB
 ```
 
 ## Deploying the lab
 The lab is deployed with the [containerlab](https://containerlab.dev/) project, where srv6-flexalgo.clab.yml file declaratively describes the lab topology.
 ```
-# change into the cloned directory
-# and execute
 containerlab deploy --reconfigure
 ```
 To remove the lab:
