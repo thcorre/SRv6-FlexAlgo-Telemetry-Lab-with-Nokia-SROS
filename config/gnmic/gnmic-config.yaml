@@ -1,0 +1,161 @@
+username: admin
+password: admin
+insecure: true
+#port: 57400
+timeout: 10s
+#skip-verify: true
+encoding: bytes 
+#endoding: json_ietf
+debug: true
+
+targets:
+  clab-srv6-flexalgo-R1:
+  clab-srv6-flexalgo-R2:
+  clab-srv6-flexalgo-R3:
+  clab-srv6-flexalgo-R4:
+  clab-srv6-flexalgo-R5:
+
+subscriptions:
+  sros_if_stats:
+    paths:
+      - /state/router[router-name=Base]/interface[interface-name=*]/statistics
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_if_oper_state:
+    paths:
+      - /state/router[router-name=*]/interface[interface-name=*]/oper-state
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_vprn_if_oper_state:
+    paths:
+      - /state/service/vprn[service-name=50]/interface[interface-name=*]/oper-state
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_vprn_if_stats:
+    paths:
+      - /state/service/vprn[service-name=50]/interface[interface-name=*]/statistics
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_if_dyn_delay_stats:
+    paths:
+      - /state/test-oam/link-measurement/router[router-instance=Base]/interface[interface-name=*]/last-reported-delay
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_cpu:
+    paths:
+      - /state/system/cpu[sample-period=60]/summary/usage/
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_mem:
+    paths:
+      - /state/system/memory-pools/summary/
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_route_table_unicast_ipv6_stats:
+    paths:
+      - /state/router[router-name=Base]/route-table/unicast/ipv6
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_bgp_peer_stats:
+    paths:
+      - /state/router[router-name=Base]/bgp/statistics/peers
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_bgp_vpn_ipv4_routes:
+    paths:
+      - /state/router[router-name=Base]/bgp/statistics/routes-per-family/vpn-ipv4/remote-active-routes
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  sros_bgp_vpn_ipv6_routes:
+    paths:
+      - /state/router[router-name=Base]/bgp/statistics/routes-per-family/vpn-ipv6/remote-active-routes
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+outputs:
+  prom:
+    type: prometheus
+    path: /metrics
+    metric-prefix: gnmic
+    append-subscription-name: true
+    # expiration: 60s
+    debug: false
+    export-timestamps: true
+    event-processors:
+      - trim-prefixes
+      - up-down-map
+
+#  stdout:
+#    type: file
+#    file-type: stdout
+#    format: event
+#    event-processors:
+#      - trim-prefixes
+
+processors:
+  trim-prefixes:
+    event-strings:
+      value-names:
+        - ".*"
+      transforms:
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/router[router-name=Base]/interface[interface-name=*]/statistics"
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/service/vprn[service-name=50]/interface[interface-name=*]/statistics"
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/test-oam/link-measurement/router[router-instance=Base]/interface[interface-name=*]/last-reported-delay"
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/system/cpu[sample-period=60]/summary/usage/"
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/system/memory-pools/summary/"
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/router[router-name=Base]/route-table/unicast/ipv6"
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/router[router-name=Base]/bgp/statistics/peers"
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/router[router-name=Base]/bgp/statistics/routes-per-family/vpn-ipv4/remote-active-routes"
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/router[router-name=Base]/bgp/statistics/routes-per-family/vpn-ipv6/remote-active-routes"
+  up-down-map:
+    event-strings:
+      value-names:
+        - oper-state
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "up"
+            new: "1"
+        - replace:
+            apply-on: "value"
+            old: "down"
+            new: "0"
