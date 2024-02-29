@@ -1,0 +1,111 @@
+name: srv6-flexalgo
+
+mgmt:
+  network: srv6-flexalgo
+#  ipv4_subnet: 172.20.20.0/24
+#  ipv6_subnet: 2001:172:20:20::0/80
+
+topology:
+
+  kinds:
+    vr-sros:
+      image: vr-sros:23.10.R3
+      license: {license_path_here}
+    linux:
+      image: ghcr.io/hellt/network-multitool
+
+  nodes:
+    R1:
+      kind: vr-sros
+      type: "cpu=2 ram=5 slot=A chassis=ixr-e2c card=cpm-ixr-e2c mda/1=m12-sfp28+2-qsfp28"
+      startup-config: config/R1/R1.cfg
+      binds:
+        - launch.py:/launch.py
+    R2:
+      kind: vr-sros
+      type: "cpu=2 ram=5 slot=A chassis=ixr-e2 card=cpm-ixr-e2 mda/1=m2-qsfpdd+2-qsfp28+24-sfp28"
+      startup-config: config/R2/R2.cfg
+      binds:
+        - launch.py:/launch.py
+    R3:
+      kind: vr-sros
+      type: >-
+        cp: cpu=2 ram=4 chassis=ixr-r6d slot=A card=cpm-ixr-r6d/iom-ixr-r6d ___
+        lc: cpu=4 ram=6 chassis=ixr-r6d slot=1 card=cpm-ixr-r6d/iom-ixr-r6d mda/1=m5-100g-qsfp28
+      startup-config: config/R3/R3.cfg
+      binds:
+        - launch.py:/launch.py
+    R4:
+      kind: vr-sros
+      type: sr-1
+      startup-config: config/R4/R4.cfg
+      binds:
+        - launch.py:/launch.py
+    R5:
+      kind: vr-sros
+      type: >-
+        cp: cpu=2 ram=4 chassis=sr-1se slot=A card=cpm-1se ___
+        lc: cpu=4 ram=6 max_nics=36 chassis=sr-1se slot=1 card=imm36-800g-qsfpdd mda/1=ms36-800g-qsfpdd
+      startup-config: config/R5/R5.cfg
+      binds:
+        - launch.py:/launch.py
+    
+    client1:
+      kind: linux
+      exec: 
+        - ip address add 172.17.11.2/30 dev eth1
+        - ip route add 172.17.44.0/30 via 172.17.11.1
+
+    client2:
+      kind: linux
+      exec:
+        - ip address add 172.17.44.2/30 dev eth1
+        - ip route add 172.17.11.0/30 via 172.17.44.1
+
+    ### TELEMETRY STACK ###
+    gnmic:
+      kind: linux
+      image: ghcr.io/openconfig/gnmic:0.36.0
+      binds:
+        - ./config/gnmic/gnmic-config.yaml:/app/gnmic-config.yaml:ro
+      cmd: '--config /app/gnmic-config.yaml --log subscribe'
+      ports:
+        - 9804:9804
+
+    prometheus:
+      kind: linux
+      image: prom/prometheus:v2.50.0
+      binds:
+        - ./config/prometheus:/etc/prometheus/
+      ports:
+        - 9090:9090
+      cmd: '--config.file=/etc/prometheus/prometheus.yaml --storage.tsdb.path=/prometheus --web.console.libraries=/usr/share/prometheus/console_libraries --web.console.templates=/usr/share/prometheus/consoles --log.level=debug'
+
+    grafana:
+      kind: linux
+      image: grafana/grafana:10.3.3
+      binds:
+        - config/grafana/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+        - config/grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
+        - config/grafana/dashboards/:/var/lib/grafana/dashboards
+      ports: 
+        - 3000:3000
+      env:
+        GF_INSTALL_PLUGINS: https://algenty.github.io/flowcharting-repository/archives/agenty-flowcharting-panel-1.0.0d.220606199-SNAPSHOT.zip;agenty-flowcharting-panel
+        # env vars to enable anonymous access
+        GF_ORG_ROLE: "Admin"
+        GF_ORG_NAME: "Main Org"
+        GF_AUTH_ANONYMOUS_ENABLED: "true"
+        GF_AUTH_ANONYMOUS: "true"
+      group: "10"
+
+  links:
+    - endpoints: ["R1:eth2", "R2:eth8"]
+    - endpoints: ["R1:eth3", "R3:eth4"]
+    - endpoints: ["R2:eth6", "R3:eth1"]
+    - endpoints: ["R2:eth7", "R4:eth1"]
+    - endpoints: ["R3:eth2", "R5:eth1"]
+    - endpoints: ["R4:eth2", "R5:eth2"]
+    - endpoints: ["R3:eth3", "R4:eth3"]
+    - endpoints: ["client1:eth1", "R1:eth4"]
+    - endpoints: ["client2:eth1", "R5:eth3"]
