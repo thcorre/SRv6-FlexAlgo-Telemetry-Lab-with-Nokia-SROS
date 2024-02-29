@@ -7,8 +7,8 @@ Objective: Creating a traffic-engineered path between R1 and R5 that uses delay 
 The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia routers spanning from Access/Aggregation (7250 IXR Gen2/2c) to Edge/Core (7750 SR FP4/FP5-based).
 This is based on usage of a Flexible Algorithm (Algo 128) with delay used as a metric condition to achieve the lowest latency path.
 
-Nowadays, observability is becoming essiential for every organisation.
-A GPG (gnmic/prometheus/grafana) open source stack is used to collect and report all the objects of interest via Telemetry/gRPC (links delay, interfaces state, metrics, cpu, mem, etc.):
+Nowadays, observability is becoming essential for every organisation.
+An open source GPG (gnmic/prometheus/grafana) stack is used to collect and report all the objects of interest via Telemetry/gRPC (links delay, interfaces state, metrics, cpu, mem, etc.):
 
 ![Screenshot 2024-02-22 at 11 33 58 AM](https://github.com/thcorre/SRv6-with-Nokia-SROS/assets/12113139/cbc7fe81-b6be-46fc-a4c6-e88f9774e6ee)
 
