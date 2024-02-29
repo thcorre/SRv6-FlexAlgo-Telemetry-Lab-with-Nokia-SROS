@@ -1,6 +1,6 @@
 # SRv6 FlexAlgo Telemetry Lab (Nokia SR OS)
 
-Objective: Creating a traffic-engineered path based on SRv6 transport between R1 and R5 that uses delay as a metric to provide connectivity between 2 clients over a L3VPN.
+Objective: Creating a traffic-engineered path based on SRv6 transport between 2 endpoints (R1 and R5) that uses delay as a metric to provide connectivity between 2 clients over a L3VPN.
 * Transport: Base SRv6 (end-dt46) and FlexAlgo 128 (with STAMP dynamic delay measurement)
 * Service: EVPN IFL (Interface-less)
 
