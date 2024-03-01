@@ -30,11 +30,11 @@ vr-sros                               23.10.R3         6725f1548692   3 days ago
 ## Deploying the lab
 The lab is deployed with the [containerlab](https://containerlab.dev/) project, where srv6-flexalgo.clab.yml file declaratively describes the lab topology.
 ```
-containerlab deploy --reconfigure
+clab deploy --reconfigure
 ```
 To remove the lab:
 ```
-containerlab destroy --cleanup
+clab destroy --cleanup
 ```
 
 ## Accessing the network elements
