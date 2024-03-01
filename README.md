@@ -5,7 +5,8 @@ Objective: Creating a traffic-engineered path based on SRv6 transport between 2 
 * Service: [EVPN](https://www.nokia.com/networks/ethernet-vpn/) IFL (Interface-less)
 
 The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia SR OS routers spanning from Access/Aggregation ([7250 IXR](https://www.nokia.com/networks/ip-networks/7250-interconnect-router/) Gen2/2c) to Edge/Core ([7750 SR](https://www.nokia.com/networks/ip-networks/7750-service-router/) FP4/FP5-based).
-This is based on usage of a Flexible Algorithm (Algo 128) with delay used as a metric condition to achieve the lowest latency path.
+This is based on usage of a Flex-Algorithm (Algo 128) with delay used as a metric condition to achieve the lowest latency path.
+The Flex-Algorithm for SRv6-based VPRNs feature allows the computation of constraint-based paths across an SRv6-enabled network, based on metrics other than the default IGP metrics. This allows carrying data traffic over an end-to-end path that is optimized using the best suited metric IGP, delay, or TE).
 
 Nowadays, observability is becoming essential for every organisation.
 An open source GPG ([gnmic](https://gnmic.openconfig.net/)/[prometheus](https://prometheus.io/)/[grafana](https://grafana.com/)) telemetry stack is used to collect and report all the objects of interest via Telemetry/gRPC (links delay, interfaces state, metrics, cpu, mem, etc.):
