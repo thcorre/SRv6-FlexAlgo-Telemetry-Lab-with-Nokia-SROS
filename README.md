@@ -8,7 +8,7 @@ The purpose of this pre-configured lab is to demonstrate the use of an end-to-en
 This is based on usage of a Flexible Algorithm (Algo 128) with delay used as a metric condition to achieve the lowest latency path.
 
 Nowadays, observability is becoming essential for every organisation.
-An open source GPG (gnmic/prometheus/grafana) stack is used to collect and report all the objects of interest via Telemetry/gRPC (links delay, interfaces state, metrics, cpu, mem, etc.):
+An open source GPG ([gnmic](https://gnmic.openconfig.net/)/[prometheus](https://prometheus.io/)/[grafana](https://grafana.com/)) stack is used to collect and report all the objects of interest via Telemetry/gRPC (links delay, interfaces state, metrics, cpu, mem, etc.):
 
 ![Screenshot 2024-02-22 at 11 33 58 AM](https://github.com/thcorre/SRv6-with-Nokia-SROS/assets/12113139/cbc7fe81-b6be-46fc-a4c6-e88f9774e6ee)
 
