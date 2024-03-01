@@ -17,10 +17,10 @@ One Linux client sending traffic to another client (unidirectional) through a L3
 
 ## Requirements
 Versions used are:
-* containerlab 0.51.3 (latest version at time of writing)
+* [containerlab](https://containerlab.dev/) 0.51.3 (latest version at time of writing)
 * vr-sros 23.10.R3 (requires license)
 
-SROS image was created using [VR Network Lab](https://github.com/vrnetlab/vrnetlab)
+SR OS VM image can be created as docker container using [VR Network Lab](https://github.com/vrnetlab/vrnetlab)
 IMPORTANT: vr-sros must be set as an image in docker to be pull directly by containerlab
 ```
 # docker images | grep vr-sros
