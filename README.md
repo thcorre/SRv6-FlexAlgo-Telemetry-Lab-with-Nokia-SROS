@@ -1,7 +1,7 @@
 # SRv6 FlexAlgo Telemetry Lab (Nokia SR OS)
 
 Objective: Creating a traffic-engineered path based on SRv6 transport between 2 endpoints (R1 and R5) that uses delay as a metric to provide connectivity between 2 clients over a L3VPN.
-* Transport: Base SRv6 (end-dt46) and FlexAlgo 128 (with STAMP dynamic delay measurement)
+* Transport: Base [SRv6](https://www.nokia.com/networks/ip-networks/segment-routing/) (end-dt46) and FlexAlgo 128 (with STAMP dynamic delay measurement)
 * Service: [EVPN](https://www.nokia.com/networks/ethernet-vpn/) IFL (Interface-less)
 
 The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia routers spanning from Access/Aggregation ([7250 IXR](https://www.nokia.com/networks/ip-networks/7250-interconnect-router/) Gen2/2c) to Edge/Core (7750 SR FP4/FP5-based).
