@@ -4,7 +4,7 @@ Objective: Creating a traffic-engineered path based on SRv6 transport between 2 
 * Transport: Base SRv6 (end-dt46) and FlexAlgo 128 (with STAMP dynamic delay measurement)
 * Service: EVPN IFL (Interface-less)
 
-The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia routers spanning from Access/Aggregation (7250 IXR Gen2/2c) to Edge/Core (7750 SR FP4/FP5-based).
+The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia routers spanning from Access/Aggregation ([7250 IXR](https://www.nokia.com/networks/ip-networks/7250-interconnect-router/) Gen2/2c) to Edge/Core (7750 SR FP4/FP5-based).
 This is based on usage of a Flexible Algorithm (Algo 128) with delay used as a metric condition to achieve the lowest latency path.
 
 Nowadays, observability is becoming essential for every organisation.
