@@ -8,27 +8,27 @@ mgmt:
 topology:
 
   kinds:
-    vr-sros:
-      image: vr-sros:23.10.R3
-      license: {license_path_here}
+    nokia_sros:
+      image: vrnetlab/nokia_sros:23.10.R3
+      license: license-sros.txt
     linux:
       image: ghcr.io/hellt/network-multitool
 
   nodes:
     R1:
-      kind: vr-sros
+      kind: nokia_sros
       type: "cpu=2 ram=5 slot=A chassis=ixr-e2c card=cpm-ixr-e2c mda/1=m12-sfp28+2-qsfp28"
       startup-config: config/R1/R1.cfg
       binds:
         - launch.py:/launch.py
     R2:
-      kind: vr-sros
+      kind: nokia_sros
       type: "cpu=2 ram=5 slot=A chassis=ixr-e2 card=cpm-ixr-e2 mda/1=m2-qsfpdd+2-qsfp28+24-sfp28"
       startup-config: config/R2/R2.cfg
       binds:
         - launch.py:/launch.py
     R3:
-      kind: vr-sros
+      kind: nokia_sros
       type: >-
         cp: cpu=2 ram=4 chassis=ixr-r6d slot=A card=cpm-ixr-r6d/iom-ixr-r6d ___
         lc: cpu=4 ram=6 chassis=ixr-r6d slot=1 card=cpm-ixr-r6d/iom-ixr-r6d mda/1=m5-100g-qsfp28
@@ -36,13 +36,13 @@ topology:
       binds:
         - launch.py:/launch.py
     R4:
-      kind: vr-sros
+      kind: nokia_sros
       type: sr-1
       startup-config: config/R4/R4.cfg
       binds:
         - launch.py:/launch.py
     R5:
-      kind: vr-sros
+      kind: nokia_sros
       type: >-
         cp: cpu=2 ram=4 chassis=sr-1se slot=A card=cpm-1se ___
         lc: cpu=4 ram=6 max_nics=36 chassis=sr-1se slot=1 card=imm36-800g-qsfpdd mda/1=ms36-800g-qsfpdd
