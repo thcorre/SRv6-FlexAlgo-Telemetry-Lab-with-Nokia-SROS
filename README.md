@@ -40,7 +40,7 @@ To remove the lab:
 clab destroy --cleanup
 ```
 
-## Accessing the network elements
+## Accessing the network elements and telemetry stack
 Once the lab has been deployed, the different SR Linux nodes can be accessed via SSH through their management IP address, given in the summary displayed after the execution of the deploy command. It is also possible to reach those nodes directly via their hostname, defined in the topology file. Linux clients cannot be reached via SSH, as it is not enabled, but it is possible to connect to them with a docker exec command.
 
 ```bash
@@ -51,6 +51,10 @@ ssh admin@clab-srv6-flexalgo-R5
 # reach a Linux client via Docker
 docker exec -it client1 bash
 ```
+
+If you are accessing from a remote host, then replace localhost by the CLAB Server IP address:
+Grafana: http://localhost:3000. Built-in user credentials: admin/admin
+Prometheus: http://localhost:9090/graph
 
 One Linux client (Client1) is sending unidirectional traffic to another client (Client2) through a L3VPN (EVPN IFL).
 A fine-grained control on links delay can be achieved via tc cmd on the host or directly through containerlab cmd to influence the lowest latency path.
