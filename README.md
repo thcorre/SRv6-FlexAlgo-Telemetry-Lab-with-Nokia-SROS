@@ -12,8 +12,11 @@ An open source GPG ([gnmic](https://gnmic.openconfig.net/)/[prometheus](https://
 
 ![Screenshot 2024-02-22 at 11 33 58 AM](https://github.com/thcorre/SRv6-with-Nokia-SROS/assets/12113139/cbc7fe81-b6be-46fc-a4c6-e88f9774e6ee)
 
-Grafana dashboards are provided to check the latency in "real" time (5-10s updates).
-One Linux client sending traffic to another client (unidirectional) through a L3VPN (EVPN IFL).
+Grafana dashboards are provided to check:
+* The state of the interfaces for each node
+* The latency on the links in "real" time (delay measurement interval via STAMP)
+* The number of BGP peers/routes per node
+* The CPU/memory per node
 
 ## Requirements
 Versions used are:
@@ -38,7 +41,6 @@ clab destroy --cleanup
 ```
 
 ## Accessing the network elements
-
 Once the lab has been deployed, the different SR Linux nodes can be accessed via SSH through their management IP address, given in the summary displayed after the execution of the deploy command. It is also possible to reach those nodes directly via their hostname, defined in the topology file. Linux clients cannot be reached via SSH, as it is not enabled, but it is possible to connect to them with a docker exec command.
 
 ```bash
@@ -50,6 +52,7 @@ ssh admin@clab-srv6-flexalgo-R5
 docker exec -it client1 bash
 ```
 
+One Linux client (Client1) is sending unidirectional traffic to another client (Client2) through a L3VPN (EVPN IFL).
 A fine-grained control on links delay can be achieved via tc cmd on the host or directly through containerlab cmd to influence the lowest latency path.
 
 
