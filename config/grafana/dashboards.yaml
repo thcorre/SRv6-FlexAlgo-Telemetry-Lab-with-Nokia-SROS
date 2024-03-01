@@ -1,0 +1,13 @@
+apiVersion: 1
+
+providers:
+- name: 'SR OS SRv6 Telemetry v1.0'
+  orgId: 1
+  folder: ''
+  type: file
+  disableDeletion: false
+  editable: true
+  options:
+    path: /var/lib/grafana/dashboards
+    foldersFromFilesStructure: true
+      
