@@ -31,7 +31,7 @@ vrnetlab/nokia_sros                               23.10.R3         6725f1548692 
 ```
 
 ## Deploying the lab
-The lab is deployed with the [containerlab](https://containerlab.dev/) project, where srv6-flexalgo.clab.yml file declaratively describes the lab topology.
+The lab is deployed with the [containerlab](https://containerlab.dev/) project, where [`srv6-flexalgo.clab.yml`](srv6-flexalgo.clab.yml) file declaratively describes the lab topology.
 ```
 clab deploy --reconfigure
 ```
