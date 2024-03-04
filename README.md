@@ -13,7 +13,7 @@ An open source GPG ([gnmic](https://gnmic.openconfig.net/)/[prometheus](https://
 
 ![Screenshot 2024-03-04 at 12 53 12 PM](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/cafa2ed8-b933-4e48-9b67-b8001b72ae17)
 
-gnmic is collecting streaming telemetry data (push-based approach) from all routers with a 5s sampling interval via gnmic subscription for certains paths of interest:
+gnmic is collecting streaming telemetry data (push-based approach) from all routers with a 5s sampling interval via gnmic subscription for certain paths of interest:
 
       - /state/router[router-name=Base]/interface[interface-name=*]/statistics
       - /state/router[router-name=*]/interface[interface-name=*]/oper-state
