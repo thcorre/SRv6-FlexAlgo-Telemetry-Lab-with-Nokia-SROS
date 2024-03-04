@@ -21,7 +21,7 @@ Grafana dashboards are provided to check:
 
 ## Network Topology
 
-![Screenshot 2024-03-04 at 12 51 00 PM](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/0bb8742f-77e2-438b-a210-fdcee89d02d9)
+![Screenshot 2024-03-04 at 12 52 16 PM](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/b76b684c-4b13-41a7-bfb9-e61d17e214cd)
 
 All routers are pre-configured - startup configuration can be found in ‘config/Rx/Rx.cfg’
 
