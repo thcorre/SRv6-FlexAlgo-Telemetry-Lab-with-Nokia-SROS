@@ -19,6 +19,8 @@ Grafana dashboards are provided to check:
 * The number of BGP peers/routes per node
 * The CPU/memory per node
 
+## Network Topology
+
 ## Requirements
 Versions used are:
 * [containerlab](https://containerlab.dev/) 0.51.3 (latest version at time of writing)
