@@ -20,15 +20,16 @@ Grafana dashboards are provided to check:
 * The CPU/memory per node
 
 ## Network Topology
-<img width="402" alt="image" src="https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/68925052-61ca-499e-ad9e-a5a6b7fbf61b">
+
+![Screenshot 2024-03-04 at 12 51 00 PM](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/0bb8742f-77e2-438b-a210-fdcee89d02d9)
+
 All routers are pre-configured - startup configuration can be found in ‘config/Rx/Rx.cfg’
 
-All Routers have 2 locators:
+All routers have 2 locators:
 - Locator ‘c000:x00:../32’ in ISIS Algo 0
 - Locator ‘c128:db8:../32’ in ISIS Algo 128 (used by VPRN 50)
 
 R1 and R5 are ready to send/receive customer traffic through VPRN 50 through SRv6 (locator c128)
-![image](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/9cf3cc67-b909-408f-beeb-cb9d09f537b1)
 
 ## Requirements
 Versions used are:
