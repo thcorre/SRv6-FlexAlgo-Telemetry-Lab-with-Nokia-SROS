@@ -73,10 +73,13 @@ If you are accessing from a remote host, then replace localhost by the CLAB Serv
 * Grafana: http://localhost:3000. Built-in user credentials: admin/admin
 * Prometheus: http://localhost:9090/graph
 
-## Launching traffic and modifying the delay on links
+## Launching traffic and modifying delay on links
 One Linux client (Client1) is sending unidiretional traffic to another client (Client2) through a L3VPN (EVPN IFL).
 2Mbps UDP traffic is ready to be launched from Client1 to Client2 via [`start_traffic.sh`](start_traffic.sh) script in main directory. Traffic can be stopped via [`stop_traffic.sh`](stop_traffic.sh).
 
-A fine-grained control on links delay can be achieved via tc cmd on the host or directly through containerlab cmd to influence the lowest latency path.
-
+A fine-grained control on links delay can be achieved via tc cmd on the host or directly through containerlab tool command (since release [0.44](https://containerlab.dev/rn/0.44/)) to influence the lowest latency path:
+```bash
+# Add 100ms latency on eth2 interface for node R1
+containerlab tools netem set -n clab-srv6-flexalgo-R1 -i eth2 --delay 100ms
+```
 
