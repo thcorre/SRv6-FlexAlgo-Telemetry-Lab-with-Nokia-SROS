@@ -29,7 +29,7 @@ gnmic is collecting streaming telemetry data (push-based approach) from all rout
 
 Note: All Nokia SR OS YANG models are publicly available on: [https://github.com/nokia/7x50_YangModels](https://github.com/nokia/7x50_YangModels).
 
-gnmic is then using prometheus TSDB as output for storing the metrics, which can be used Grafana (PromQL).
+gnmic is then using prometheus TSDB as output for storing the metrics which can then be fetched by Grafana for monitoring (PromQL).
 
 Grafana dashboards are provided to check:
 * The state of the interfaces for each node
@@ -43,11 +43,11 @@ Grafana dashboards are provided to check:
 
 All routers are pre-configured - startup configuration can be found in ‘config/Rx/Rx.cfg’.
 
-All routers have 2 locators:
-- Locator ‘c000:x00:../32’ in ISIS Algo 0
-- Locator ‘c128:db8:../32’ in ISIS Algo 128 (used by VPRN 50)
+Each router has 2 locators:
+- Locator ‘c000:db8:aaa:10n::/64’ in ISIS Algo 0
+- Locator ‘c128:db8:aaa:10n::/64’ in ISIS Algo 128 (used by VPRN 50) where n is Node-ID, so 1 is R1, 5 is R5
 
-R1 and R5 are ready to send/receive customer traffic through VPRN 50 through SRv6 (locator c128).
+R1 and R5 are ready to send/receive customer traffic through VPRN 50 (locator ‘c128:db8:aaa:10n::/64’).
 
 Using Grafana dashboard, it is possible to get direct correlation between the sum of TWAMP delay measurement on individual links and the IPv6 route table as shown below:
 
