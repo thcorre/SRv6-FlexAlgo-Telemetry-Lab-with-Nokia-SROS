@@ -59,7 +59,10 @@ If you are accessing from a remote host, then replace localhost by the CLAB Serv
 * Grafana: http://localhost:3000. Built-in user credentials: admin/admin
 * Prometheus: http://localhost:9090/graph
 
+## Launching traffic and modifying the delay on links
 One Linux client (Client1) is sending unidirectional traffic to another client (Client2) through a L3VPN (EVPN IFL).
+2Mbps UDP traffic ready setup from client-1 to client-2: launch with ‘./start_traffic.sh’ in main directory
+
 A fine-grained control on links delay can be achieved via tc cmd on the host or directly through containerlab cmd to influence the lowest latency path.
 
 
