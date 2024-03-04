@@ -23,13 +23,17 @@ Grafana dashboards are provided to check:
 
 ![Screenshot 2024-03-04 at 12 52 16 PM](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/b76b684c-4b13-41a7-bfb9-e61d17e214cd)
 
-All routers are pre-configured - startup configuration can be found in ‘config/Rx/Rx.cfg’
+All routers are pre-configured - startup configuration can be found in ‘config/Rx/Rx.cfg’.
 
 All routers have 2 locators:
 - Locator ‘c000:x00:../32’ in ISIS Algo 0
 - Locator ‘c128:db8:../32’ in ISIS Algo 128 (used by VPRN 50)
 
-R1 and R5 are ready to send/receive customer traffic through VPRN 50 through SRv6 (locator c128)
+R1 and R5 are ready to send/receive customer traffic through VPRN 50 through SRv6 (locator c128).
+
+Using Grafana dashboard, it is possible to get direct correlation between the sum of TWAMP delay measurement on individual links and the IPv6 route table as shown below:
+
+![Screenshot 2024-03-04 at 1 03 17 PM](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/36074d70-ab1a-419c-9584-15aa651eea39)
 
 ## Requirements
 Versions used are:
