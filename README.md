@@ -13,6 +13,23 @@ An open source GPG ([gnmic](https://gnmic.openconfig.net/)/[prometheus](https://
 
 ![Screenshot 2024-03-04 at 12 53 12 PM](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/cafa2ed8-b933-4e48-9b67-b8001b72ae17)
 
+gnmic is collecting streaming telemetry data (push-based approach) from all routers with a 5s sampling interval via gnmic subscription for certains paths of interest:
+      - /state/router[router-name=Base]/interface[interface-name=*]/statistics
+      - /state/router[router-name=*]/interface[interface-name=*]/oper-state
+      - /state/service/vprn[service-name=50]/interface[interface-name=*]/oper-state
+      - /state/service/vprn[service-name=50]/interface[interface-name=*]/statistics
+      - /state/test-oam/link-measurement/router[router-instance=Base]/interface[interface-name=*]/last-reported-delay
+      - /state/system/cpu[sample-period=60]/summary/usage/
+      - /state/system/memory-pools/summary/
+      - /state/router[router-name=Base]/route-table/unicast/ipv6
+      - /state/router[router-name=Base]/bgp/statistics/peers
+      - /state/router[router-name=Base]/bgp/statistics/routes-per-family/vpn-ipv4/remote-active-routes
+      - /state/router[router-name=Base]/bgp/statistics/routes-per-family/vpn-ipv6/remote-active-routes
+
+Note: All Nokia SR OS YANG models are publicly available on: [https://github.com/nokia/7x50_YangModels](https://github.com/nokia/7x50_YangModels).
+
+gnmic is then using prometheus TSDB as output for storing the metrics, which can be used Grafana (PromQL).
+
 Grafana dashboards are provided to check:
 * The state of the interfaces for each node
 * The latency on the links in "real" time (delay measurement interval via STAMP)
