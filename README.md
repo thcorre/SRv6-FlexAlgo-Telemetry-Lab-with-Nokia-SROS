@@ -5,6 +5,7 @@ Objective: Creating a traffic-engineered path based on SRv6 transport between 2 
 * Service: [EVPN](https://www.nokia.com/networks/ethernet-vpn/) IFL (Interface-less)
 
 The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia SR OS routers spanning from Access/Aggregation ([7250 IXR](https://www.nokia.com/networks/ip-networks/7250-interconnect-router/) Gen2/2c) to Edge/Core ([7750 SR](https://www.nokia.com/networks/ip-networks/7750-service-router/), [FP4/FP5-based](https://www.nokia.com/networks/technologies/fp-network-processor-technology/)):
+
 ![wan_nodes drawio](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/943a1061-fb6c-4263-9717-9e602507dc20)
 
 
