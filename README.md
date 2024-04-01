@@ -4,7 +4,10 @@ Objective: Creating a traffic-engineered path based on SRv6 transport between 2 
 * Transport: Base [SRv6](https://www.nokia.com/networks/ip-networks/segment-routing/) (end-dt46) and FlexAlgo 128 (with STAMP dynamic delay measurement)
 * Service: [EVPN](https://www.nokia.com/networks/ethernet-vpn/) IFL (Interface-less)
 
-The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia SR OS routers spanning from Access/Aggregation ([7250 IXR](https://www.nokia.com/networks/ip-networks/7250-interconnect-router/) Gen2/2c) to Edge/Core ([7750 SR](https://www.nokia.com/networks/ip-networks/7750-service-router/), [FP4/FP5-based](https://www.nokia.com/networks/technologies/fp-network-processor-technology/)).
+The purpose of this pre-configured lab is to demonstrate the use of an end-to-end SRv6 transport on Nokia SR OS routers spanning from Access/Aggregation ([7250 IXR](https://www.nokia.com/networks/ip-networks/7250-interconnect-router/) Gen2/2c) to Edge/Core ([7750 SR](https://www.nokia.com/networks/ip-networks/7750-service-router/), [FP4/FP5-based](https://www.nokia.com/networks/technologies/fp-network-processor-technology/)):
+![wan_nodes drawio](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/943a1061-fb6c-4263-9717-9e602507dc20)
+
+
 This relies on usage of a Flex-Algorithm (Algo 128) with delay used as metric to achieve the lowest latency path.
 The Flex-Algorithm for SRv6-based VPRNs feature allows the computation of constraint-based paths across an SRv6-enabled network, based on metrics other than the default IGP metrics. This allows carrying data traffic over an end-to-end path that is optimized using the best suited metric IGP, delay, or TE).
 
@@ -55,7 +58,7 @@ Using Grafana dashboard, it is possible to get direct correlation between the su
 
 ## Requirements
 Versions used are:
-* [containerlab](https://containerlab.dev/) 0.51.3 (latest version at time of writing)
+* [containerlab](https://containerlab.dev/) 0.53.0 (latest version at time of writing)
 * [nokia_sros](https://containerlab.dev/manual/kinds/vr-sros/) 23.10.R3 (requires license)
 
 SR OS VM image can be created as docker container using [VR Network Lab](https://github.com/vrnetlab/vrnetlab)
