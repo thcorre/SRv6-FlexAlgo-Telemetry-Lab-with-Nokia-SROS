@@ -53,6 +53,26 @@ Each router has 2 locators:
 
 R1 and R5 are ready to send/receive customer traffic through VPRN 50 (locator ‘c128:db8:aaa:10n::/64’).
 
+The protocol used to dynamically measure link delay is the light version of the Two-Way Active Measurement Protocol (TWAMP-Light), defined in IETF RFC 5357. The corresponding configuration on interface "to-R3" of router R1 is shown below:
+```
+interface "to-R3" {
+-- Snip --
+      if-attribute {
+            delay {
+                  delay-selection dynamic
+                  dynamic {
+                        measurement-template "standard-direct"
+                        twamp-light {
+                            ipv4 {
+                                admin-state enable
+                            }
+                        }
+                  }
+            }
+      }
+}
+```
+
 Using Grafana dashboard, it is possible to get direct correlation between the sum of TWAMP delay measurement on individual links and the IPv6 route table as shown below:
 
 ![Screenshot 2024-03-04 at 1 03 17 PM](https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS/assets/12113139/36074d70-ab1a-419c-9584-15aa651eea39)
