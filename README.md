@@ -79,13 +79,13 @@ Using Grafana dashboard, it is possible to get direct correlation between the su
 
 ## Requirements
 Versions used are:
-* [containerlab](https://containerlab.dev/) 0.53.0 (latest version at time of writing)
-* [nokia_sros](https://containerlab.dev/manual/kinds/vr-sros/) 23.10.R3 (requires license)
+* [containerlab](https://containerlab.dev/) 0.57.5 (latest version at time of writing)
+* [nokia_sros](https://containerlab.dev/manual/kinds/vr-sros/) 23.10.R6 (requires license)
 
 SR OS VM image can be created as docker container using [VR Network Lab](https://github.com/vrnetlab/vrnetlab) (vr-sros must be set as an image in docker to be pull directly by containerlab):
 ```
 # docker images | grep vr-sros
-vrnetlab/nokia_sros                               23.10.R3         6725f1548692   3 days ago      1.43GB
+vrnetlab/nokia_sros                               23.10.R6         6725f1548692   3 days ago      1.43GB
 ```
 
 ## Deploying the lab
