@@ -74,7 +74,7 @@ topology:
 
     prometheus:
       kind: linux
-      image: prom/prometheus:v2.50.0
+      image: prom/prometheus:v2.54.1
       binds:
         - ./config/prometheus:/etc/prometheus/
       ports:
