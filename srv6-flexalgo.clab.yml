@@ -9,7 +9,7 @@ topology:
 
   kinds:
     nokia_sros:
-      image: vrnetlab/nokia_sros:23.10.R3
+      image: vrnetlab/nokia_sros:23.10.R6
       license: license-sros.txt
     linux:
       image: ghcr.io/hellt/network-multitool
