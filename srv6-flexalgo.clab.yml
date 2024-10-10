@@ -17,13 +17,15 @@ topology:
   nodes:
     R1:
       kind: nokia_sros
-      type: "cpu=2 ram=5 slot=A chassis=ixr-e2c card=cpm-ixr-e2c mda/1=m12-sfp28+2-qsfp28"
+      type: ixr-e2c
+#      type: "cpu=2 ram=5 slot=A chassis=ixr-e2c card=cpm-ixr-e2c mda/1=m12-sfp28+2-qsfp28"
       startup-config: config/R1/R1.cfg
       binds:
         - launch.py:/launch.py
     R2:
       kind: nokia_sros
-      type: "cpu=2 ram=5 slot=A chassis=ixr-e2 card=cpm-ixr-e2 mda/1=m2-qsfpdd+2-qsfp28+24-sfp28"
+      type: ixr-e2
+#      type: "cpu=2 ram=5 slot=A chassis=ixr-e2 card=cpm-ixr-e2 mda/1=m2-qsfpdd+2-qsfp28+24-sfp28"
       startup-config: config/R2/R2.cfg
       binds:
         - launch.py:/launch.py
