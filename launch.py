@@ -287,7 +287,7 @@ SROS_VARIANTS = {
     },
     "ixr-e2c": {
         "deployment_model": "integrated",
-        "min_ram": 4,  # minimum RAM requirements
+        "min_ram": 5,  # minimum RAM requirements
         "max_nics": 30,
         **line_card_config(
             chassis="ixr-e2c",
@@ -299,7 +299,7 @@ SROS_VARIANTS = {
     },
     "ixr-e2": {
         "deployment_model": "integrated",
-        "min_ram": 4,  # minimum RAM requirements
+        "min_ram": 5,  # minimum RAM requirements
         "max_nics": 30,
         **line_card_config(
             chassis="ixr-e2",
