@@ -7,7 +7,7 @@ topology:
 
   kinds:
     nokia_sros:
-      image: vrnetlab/nokia_sros:23.10.R6
+      image: registry.srlinux.dev/pub/vr-sros:23.10.R6
       license: license-sros.txt
     linux:
       image: ghcr.io/hellt/network-multitool
@@ -75,7 +75,7 @@ topology:
 
     grafana:
       kind: linux
-      image: grafana/grafana:10.4.10
+      image: grafana/grafana:10.3.5
       binds:
         - config/grafana/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
         - config/grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
@@ -83,12 +83,14 @@ topology:
       ports: 
         - 3000:3000
       env:
-        GF_INSTALL_PLUGINS: https://algenty.github.io/flowcharting-repository/archives/agenty-flowcharting-panel-1.0.0d.220606199-SNAPSHOT.zip;agenty-flowcharting-panel
+        GF_INSTALL_PLUGINS: https://algenty.github.io/flowcharting-repository/archives/agenty-flowcharting-panel-1.0.0d.220606199-SNAPSHOT.zip;agenty-flowcharting-panel,https://github.com/cloudspout/cloudspout-button-panel/releases/download/7.0.23/cloudspout-button-panel.zip;cloudspout-button-panel
         # env vars to enable anonymous access
         GF_ORG_ROLE: "Admin"
         GF_ORG_NAME: "Main Org"
         GF_AUTH_ANONYMOUS_ENABLED: "true"
         GF_AUTH_ANONYMOUS: "true"
+        GF_SECURITY_ALLOW_EMBEDDING: "true"
+        GF_DASHBOARDS_MIN_REFRESH_INTERVAL: 2s
       group: "10"
 
   links:
