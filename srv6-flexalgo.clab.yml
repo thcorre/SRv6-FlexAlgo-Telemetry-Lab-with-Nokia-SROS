@@ -2,8 +2,6 @@ name: srv6-flexalgo
 
 mgmt:
   network: srv6-flexalgo
-#  ipv4_subnet: 172.20.20.0/24
-#  ipv6_subnet: 2001:172:20:20::0/80
 
 topology:
 
@@ -19,6 +17,7 @@ topology:
       kind: nokia_sros
       type: ixr-e2c
       startup-config: config/R1/R1.cfg
+
     R2:
       kind: nokia_sros
       type: ixr-e2
@@ -42,7 +41,7 @@ topology:
         cp: cpu=2 ram=4 chassis=sr-1se slot=A card=cpm-1se ___
         lc: cpu=4 ram=6 max_nics=36 chassis=sr-1se slot=1 card=imm36-800g-qsfpdd mda/1=ms36-800g-qsfpdd
       startup-config: config/R5/R5.cfg
-    
+
     client1:
       kind: linux
       exec: 
