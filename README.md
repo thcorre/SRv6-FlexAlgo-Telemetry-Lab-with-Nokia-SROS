@@ -80,19 +80,15 @@ Using Grafana dashboard, it is possible to get direct correlation between the su
 ## Requirements
 
 To deploy this lab you need:
-1. a server with Docker and Containerlab (0.57.5 version used at time of writing).
-2. SR OS 23.10.R1+ image (23.10.R6 version used at time of writing) and a valid license file.
-
-Versions used are:
-* [containerlab](https://containerlab.dev/) 
-* [nokia_sros](https://containerlab.dev/manual/kinds/vr-sros/)
+1. a server with Docker and [containerlab](https://containerlab.dev/) (0.57.5 version used at time of writing).
+2. [nokia_sros](https://containerlab.dev/manual/kinds/vr-sros/) 23.10.R1+ image (23.10.R6 version used at time of writing) and a valid license file.
 
 ## Clone the lab on your server
 To deploy this lab, you must clone it to your server with git.
 
 ```bash
 # change to a working directory of your choice and clone the lab
-git clone https://github.com/srl-labs/SROS-anysec-macsec-lab.git
+git clone https://github.com/thcorre/SRv6-FlexAlgo-Telemetry-Lab-with-Nokia-SROS.git
 ```
 
 SR OS VM image can be created as docker container using [VR Network Lab](https://github.com/vrnetlab/vrnetlab) (vr-sros must be set as an image in docker to be pull directly by containerlab):
